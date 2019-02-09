@@ -1,7 +1,14 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { LOADING_SMURFS, GOT_SMURFS, GOT_FAILURE } from "../actions";
+import {
+  LOADING_SMURFS,
+  GOT_SMURFS,
+  GOT_FAILURE,
+  ADDING_SMURF,
+  ADD_SUCCESS,
+  ADD_FAILURE
+} from "../actions";
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this*/
@@ -11,7 +18,8 @@ const initialState = {
   addingSmurf: false,
   updatingSmurf: false,
   deletingSmurf: false,
-  error: null
+  fetchError: null,
+  addError: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -21,7 +29,18 @@ export default function reducer(state = initialState, action) {
     case GOT_SMURFS:
       return { ...state, fetchingSmurfs: false, smurfs: action.smurfs };
     case GOT_FAILURE:
-      return { ...state, error: action.error };
+      return { ...state, fetchError: action.error };
+    case ADDING_SMURF:
+      return { ...state, addingSmurf: true };
+    case ADD_SUCCESS:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.smurfs,
+        addError: null
+      };
+    case ADD_FAILURE:
+      return { ...state, addError: action.error.toString() };
     default:
       return state;
   }
