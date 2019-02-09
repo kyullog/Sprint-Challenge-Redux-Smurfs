@@ -14,6 +14,6 @@
 - Application state would be best used for important data that will have an effect on how the application functions as a whole.
 - Component state is best for information that can be temporarily held within a component before being sent to an action creator to create some type of change to the application state.
 
-4.  What is middleware?
-5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-6.  Which `react-redux` method links up our `components` with our `redux store`?
+4.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+- redux-thunk is a middleware library that allows us to perform asynchronous functions with Redux, such as making calls to API's to access and manipulate data remotely, without breaking Redux. Action creators using thunk must return a function that is then intercepted by thunk, which does its thing to keep the redux store happy while asynchronous functions are happening.
