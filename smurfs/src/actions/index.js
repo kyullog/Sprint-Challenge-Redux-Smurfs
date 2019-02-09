@@ -26,7 +26,9 @@ export const getSmurfs = URL => dispatch => {
   dispatch({ type: LOADING_SMURFS });
   axios
     .get(URL)
-    .then(response => dispatch({ type: GOT_SMURFS, smurfs: response.data }))
+    .then(response => {
+      dispatch({ type: GOT_SMURFS, smurfs: response.data });
+    })
     .catch(err => dispatch({ type: GOT_FAILURE, error: err }));
 };
 
@@ -34,6 +36,10 @@ export const addSmurf = (URL, smurf) => dispatch => {
   dispatch({ type: ADDING_SMURF });
   axios
     .post(URL, smurf)
-    .then(response => console.log(response))
-    .then(err => console.log(err));
+    .then(response => {
+      dispatch({ type: ADD_SUCCESS, smurfs: response.data });
+    })
+    .catch(err => {
+      dispatch({ type: ADD_FAILURE, error: err });
+    });
 };
