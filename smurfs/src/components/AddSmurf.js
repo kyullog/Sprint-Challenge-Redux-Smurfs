@@ -25,35 +25,44 @@ class AddSmurf extends Component {
 
   render() {
     return (
-      <form className="add-smurf-form" onSubmit={this.submitHandler}>
-        <input
-          type="text"
-          value={this.state.name}
-          name="name"
-          placeholder="Smurf"
-          onChange={this.changeHandler}
-        />
-        <input
-          type="text"
-          value={this.state.age}
-          name="age"
-          placeholder="Age"
-          onChange={this.changeHandler}
-        />
-        <input
-          type="text"
-          value={this.state.height}
-          name="height"
-          placeholder="Height"
-          onChange={this.changeHandler}
-        />
-        <button>Smurf!</button>
-      </form>
+      <div className="add-smurf-wrapper">
+        <form className="add-smurf-form" onSubmit={this.submitHandler}>
+          <input
+            type="text"
+            value={this.state.name}
+            name="name"
+            placeholder="Smurf"
+            onChange={this.changeHandler}
+          />
+          <input
+            type="text"
+            value={this.state.age}
+            name="age"
+            placeholder="Age"
+            onChange={this.changeHandler}
+          />
+          <input
+            type="text"
+            value={this.state.height}
+            name="height"
+            placeholder="Height"
+            onChange={this.changeHandler}
+          />
+          <button>Smurf!</button>
+        </form>
+        {this.props.error && <h2>{this.props.error}</h2>}
+      </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    error: state.addError
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { addSmurf }
 )(AddSmurf);
