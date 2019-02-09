@@ -23,6 +23,6 @@ export const getSmurfs = URL => dispatch => {
   dispatch({ type: LOADING_SMURFS });
   axios
     .get(URL)
-    .then(response => console.log(response))
-    .catch(err => console.log(err));
+    .then(response => dispatch({ type: GOT_SMURFS, smurfs: response.data }))
+    .catch(err => dispatch({ type: GOT_FAILURE, error: err }));
 };
