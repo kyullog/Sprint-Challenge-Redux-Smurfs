@@ -13,12 +13,12 @@ const initialState = {
   error: null
 };
 
-export default (reducer = (state, action) => {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     default:
       return state;
   }
-});
+}
 
 /*
   You'll only need one smurf reducer for this project.
