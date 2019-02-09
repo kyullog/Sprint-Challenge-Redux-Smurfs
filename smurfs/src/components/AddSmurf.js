@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { addSmurf } from "../actions";
 
 class AddSmurf extends Component {
   constructor() {
@@ -19,6 +20,7 @@ class AddSmurf extends Component {
 
   submitHandler = e => {
     e.preventDefault();
+    this.props.addSmurf("http://localhost:3333/smurfs", this.state);
   };
 
   render() {
@@ -51,4 +53,7 @@ class AddSmurf extends Component {
   }
 }
 
-export default connect()(AddSmurf);
+export default connect(
+  null,
+  { addSmurf }
+)(AddSmurf);
