@@ -23,7 +23,9 @@ class App extends Component {
         <div>Have fun!</div>
         <AddSmurf />
         {this.props.fetchingSmurf && <h2>Loading!</h2>}
-        {!this.props.fetchingSmurfs && <SmurfList />}
+        {!this.props.fetchingSmurfs && !this.props.fetchingError && (
+          <SmurfList />
+        )}
       </div>
     );
   }
@@ -31,7 +33,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    fetchingSmurfs: state.fetchingSmurfs
+    fetchingSmurfs: state.fetchingSmurfs,
+    fetchingError: state.fetchingError
   };
 };
 
