@@ -10,6 +10,10 @@
 
 3.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
+- Application state could best be described as the 'global' state of the application, in which all components can have access to the state through the connect method. Component state is only accessible from that component and any children of that component who is passed that state through props.
+- Application state would be best used for important data that will have an effect on how the application functions as a whole.
+- Component state is best for information that can be temporarily held within a component before being sent to an action creator to create some type of change to the application state.
+
 4.  What is middleware?
 5.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 6.  Which `react-redux` method links up our `components` with our `redux store`?
